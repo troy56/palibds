@@ -21,7 +21,6 @@ int main(int argc, char ** argv)
 						zelda); // Name
 						
 						PA_InitText(0, 0);
-				
 		
 	// Next we'll scroll, here are the variables...
 	s32 scrollx = 0; 

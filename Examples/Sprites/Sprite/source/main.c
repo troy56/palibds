@@ -20,6 +20,7 @@ int main(void){
 					1, // 256 color mode
 					0, // Sprite palette number
 					50, 50); // X and Y position on the screen
+				
 
 	while(1) // Infinite loops
 	{
