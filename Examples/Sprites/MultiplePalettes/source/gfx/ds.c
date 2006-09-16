@@ -1,4 +1,4 @@
-//Sprite created using Mollusk's PASpriteConverter
+//Sprite created using PAGfx
 //This sprite uses ds_Pal
 
 const unsigned char ds_Sprite[4096] __attribute__ ((aligned (4))) = {
