@@ -17,10 +17,10 @@ int main(int argc, char ** argv)
 	PA_InitVBL(); // Initializes a standard VBL
 	
 	// Load Backgrounds with their palettes !
-	PA_LoadTiledBg(0, // screen
+	PA_EasyBgLoad(0, // screen
 					3, // background number (0-3)
 					bg0); // Background name, used by PAGfx...
-	PA_LoadTiledBg(1, 0, bg0);	
+	PA_EasyBgLoad(1, 0, bg0);	
 
 	// Infinite loop to keep the program running
 	while (1)

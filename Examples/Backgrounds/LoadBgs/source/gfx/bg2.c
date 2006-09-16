@@ -1,8 +1,7 @@
-//Background converted using Mollusk's PAImageConverter
+//Background converted using Mollusk's PAGfx Converter
 //This Background uses bg2_Pal
 
-int bg2_Width = 256;
-int bg2_Height = 192;
+const int bg2_Info[3] = {2, 256, 192}; // BgMode, Width, Height
 
 const unsigned short bg2_Map[768] __attribute__ ((aligned (4))) = {
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 

@@ -16,15 +16,15 @@ int main(int argc, char ** argv)
 	PA_InitVBL(); // Initializes a standard VBL
 
 	// Load the 4 Backgrounds
-	PA_LoadTiledBg(0, 0, bg0);	
-	PA_LoadTiledBg(0, 1, bg1);	
-	PA_LoadTiledBg(0, 2, bg2);	
-	PA_LoadTiledBg(0, 3, bg3);	
-	
+	PA_EasyBgLoad(0, 0, bg0);	
+	PA_EasyBgLoad(0, 1, bg1);	
+	PA_EasyBgLoad(0, 2, bg2);	
+	PA_EasyBgLoad(0, 3, bg3);	
+
 	// Infinite loop to keep the program running
 	while (1)
 	{
-		PA_WaitForVBL();
+      PA_WaitForVBL();
 	}
 	
 	return 0;

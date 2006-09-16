@@ -12,9 +12,9 @@ int main(int argc, char ** argv)
 	PA_InitVBL(); // Initializes a standard VBL
 	
 	// Load the 4 Backgrounds on the bottom screen...
-	PA_LoadTiledBg(0, 1, BG1);	//screen, background number, background name
-	PA_LoadTiledBg(0, 2, BG2);	
-	PA_LoadTiledBg(0, 3, BG3);	
+	PA_EasyBgLoad(0, 1, BG1);	//screen, background number, background name
+	PA_EasyBgLoad(0, 2, BG2);	
+	PA_EasyBgLoad(0, 3, BG3);	
 
 	// Initialise parallax vertically (Y axis) for both backgrounds
 	// 256 is normal speed, 128 half speed, 512 twice as fast...
