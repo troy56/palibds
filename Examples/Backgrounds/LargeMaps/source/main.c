@@ -16,7 +16,7 @@ int main(int argc, char ** argv)
 	PA_InitVBL(); // Initializes a standard VBL
 	
 	// Load a large scrolling background converted with PAGfx... 
-	PA_LoadPAGfxLargeBg(0, //screen
+	PA_EasyBgLoad(0, //screen
 						3, //background number (0-3)
 						zelda); // Name
 						
