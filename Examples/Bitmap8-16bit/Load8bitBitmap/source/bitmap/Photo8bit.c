@@ -1,4 +1,4 @@
-//8bit Bitmap converted using Mollusk's PASpriteConverter
+// 8bit Bitmap converted using PAGfx
 //This bitmap uses bitmap_Pal
 
 const unsigned char Photo8bit_Bitmap[49152] __attribute__ ((aligned (4))) = {

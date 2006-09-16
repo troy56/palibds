@@ -1,16 +1,17 @@
-//Gfx converted using Mollusk's PAGfxConverter
+//Gfx converted using Mollusk's PAGfx Converter
 
 //This file contains all the .h, for easier inclusion in a project
-#ifndef __ALL_GFX__
-#define __ALL_GFX__
 
+#ifndef ALL_GFX_H
+#define ALL_GFX_H
 
-// Sprite files : 
 
 // Background files : 
-extern const unsigned short Photo16bit_Sprite[49152];  // 16bit bitmap
+extern const unsigned short Photo16bit_Bitmap[49152] __attribute__ ((aligned (4))) ;  // 16bit bitmap
+
 
 // Palette files : 
+
 
 #endif
 

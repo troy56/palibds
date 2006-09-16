@@ -1,4 +1,4 @@
-//16bit Bitmap created using Mollusk's PASpriteConverter
+// 16bit Bitmap created using PAGfx
 
 const unsigned short Photo16bit_Bitmap[49152] __attribute__ ((aligned (4))) = {
 38480, 42673, 35242, 32834, 32834, 34882, 34816, 36897, 34882, 34882, 32834, 32834, 32834, 32834, 32834, 34882, 
