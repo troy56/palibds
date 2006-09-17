@@ -1,8 +1,7 @@
-//Background converted using Mollusk's PAImageConverter
+//Background converted using Mollusk's PAGfx Converter
 //This Background uses hills_Pal
 
-int hills_Width = 768;
-int hills_Height = 192;
+const int hills_Info[3] = {4, 768, 192}; // BgMode, Width, Height
 
 const unsigned short hills_Map[2304] __attribute__ ((aligned (4))) = {
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 

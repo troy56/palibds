@@ -39,9 +39,9 @@ int main(void)	{
 
 	PA_LoadSpritePal(0, 0, (void*)sprite0_Pal);	// Palette....	
 
-	PA_LoadPAGfxLargeBg(0, 1, mario_world); // platfroms...
-	PA_LoadPAGfxLargeBg(0, 2, hills); // hills
-	PA_LoadPAGfxLargeBg(0, 3, back); // back
+	PA_EasyBgLoad(0, 1, mario_world); // platfroms...
+	PA_EasyBgLoad(0, 2, hills); // hills
+	PA_EasyBgLoad(0, 3, back); // back
 	
 	PA_InitParallaxX(0, 0, 256, 128, 64);
 	

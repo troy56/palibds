@@ -1,8 +1,7 @@
-//Background converted using Mollusk's PAImageConverter
+//Background converted using Mollusk's PAGfx Converter
 //This Background uses mario_world_Pal
 
-int mario_world_Width = 256;
-int mario_world_Height = 192;
+const int mario_world_Info[3] = {2, 256, 192}; // BgMode, Width, Height
 
 const unsigned short mario_world_Map[768] __attribute__ ((aligned (4))) = {
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
