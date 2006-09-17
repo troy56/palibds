@@ -1,8 +1,7 @@
-//Background converted using Mollusk's PAImageConverter
+//Background converted using Mollusk's PAGfx Converter
 //This Background uses newfont_Pal
 
-int newfont_Width = 256;
-int newfont_Height = 72;
+const int newfont_Info[3] = {2, 256, 72}; // BgMode, Width, Height
 
 const unsigned short newfont_Map[288] __attribute__ ((aligned (4))) = {
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
