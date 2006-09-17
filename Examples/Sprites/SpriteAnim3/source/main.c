@@ -13,7 +13,7 @@ Thanks to http://www.reinerstileset.4players.de:1059/englisch.htm and Arog for t
 
 
 s16 framecount; //Frame count...
-
+const unsigned char explosion[28672] __attribute__ ((aligned (4)));
 
 // Main function
 int main(void)	{
@@ -27,7 +27,7 @@ int main(void)	{
 	PA_LoadSpritePal(0, // Screen
 					0, // Palette number
 					(void*)explosion_Pal);	// Palette name
-	
+
 	// Here, we'll load a few similar sprites sprite to animate... at different speed
 	PA_CreateSprite(0, 0,(void*)explosion_Sprite, OBJ_SIZE_64X64,1, 0, 0, 64);
 	PA_CreateSprite(0, 1,(void*)explosion_Sprite, OBJ_SIZE_64X64,1, 0, 64, 64);	
@@ -49,8 +49,8 @@ int main(void)	{
 	PA_OutputSimpleText(0, 0, 6, "Infinite");
 	PA_OutputSimpleText(0, 8, 7, "OneShot");	
 	PA_OutputSimpleText(0, 16, 6, " UpDown");
-	PA_OutputSimpleText(0, 24, 7, "5 Times");			
-
+	PA_OutputSimpleText(0, 24, 7, "5 Times");	
+	
 	while(1)
 	{
 		PA_WaitForVBL();
@@ -58,3 +58,5 @@ int main(void)	{
 	
 	return 0;
 }
+
+
