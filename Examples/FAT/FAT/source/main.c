@@ -4,8 +4,13 @@
 
 // Includes
 #include <PA9.h>       // Include for PA_Lib
+#include <stdio.h>
+#include <stdlib.h>
 
-char filename[20]; // Temporary string for file names
+char filename[50]; // Temporary string for file names
+
+
+char* filewrite();
 
 // Function: main()
 int main(int argc, char ** argv)
@@ -19,32 +24,90 @@ int main(int argc, char ** argv)
 	
 	PA_WaitForVBL();  PA_WaitForVBL();  PA_WaitForVBL();  // wait a few VBLs
 	
-	FAT_InitFiles();  // FAT driver init
-
-	u8 filetype = FAT_FindFirstFile(filename);
-	if(filetype == 1) PA_OutputText(1, 0, 1, "First File : %s    ", filename);	  // 1 if file
-	else if(filetype == 2) PA_OutputText(1, 0, 1, "First Folder : %s    ", filename);	// 2 if folder
-	else 	PA_OutputText(1, 0, 1, "No File found"); // no file or folder...
+	if (PA_InitFat()) {
+    
+		PA_OutputText(1,0,0,"fat init success");
 	
-	u8 i;
-	// Find a few files...
-	for (i = 1; (i < 20)&&(filetype!= 0); i++){  // search for 10 files... stops if no file found
-		filetype = FAT_FindNextFile(filename);
-		if(filetype == 1) PA_OutputText(1, 0, i, "File : %s    ", filename);	  // 1 if file
-		else if(filetype == 2) PA_OutputText(1, 0, i, "Folder : %s    ", filename);	// 2 if folder
-		else 	PA_OutputText(1, 0, i, "Nothing else"); // no file or folder...
-	}	
+		PA_OutputText(1,0,1,PA_ReadTextFile("/test.txt"));
+		
+		PA_OutputText(1,0,0,"%d  bytes written", PA_WriteTextFile("/test.txt", filewrite()));
+		
 
+	
+	} else {
+	
+		PA_OutputText(1,0,0,"fat init failure");
+    
+					// Failure stop program
+		while(1) { 
+	
+		}
+	} 
+	PA_KeyboardOut();
+	PA_OutputText(1,0,4,"File written to card, Reboot ds and check the message");
 
 	while (1)
 	{ 
 			
-			
+		
+		
 		PA_WaitForVBL();
 	}
 	
 	return 0;
 } // End of main()
+	
+
+char* filewrite() {
+
+	char* text2write=" ";
+	char text[200];
+	
+	PA_InitKeyboard(2); // Load the keyboard on background 2...
+	PA_KeyboardIn(20, 100); // This scrolls the keyboard from the bottom, until it's at the right position
+	// PA_KeyboardOut() can be used to scroll the Keyboard out
+	// PA_ScrollKeyboardXY(x, y) can be used to set the keyboards position
+	
+	
+	PA_OutputSimpleText(1, 7, 10, "Text : "); 
+	
+	s32 nletter = 0; // Next letter to right. 0 since no letters are there yet
+	char letter = 0; // New letter to write.
+	
+	// Infinite loop to keep the program running
+	while (1)
+	{
+
+		letter = PA_CheckKeyboard();
+		
+		if (letter > 31) { // there is a new letter
+			text[nletter] = letter;
+			nletter++;
+		}
+		else if ((letter == PA_BACKSPACE)&&nletter) { // Backspace pressed
+			nletter--;
+			text[nletter] = ' '; // Erase the last letter
+		}
+		else if (letter == '\n'){ // Enter pressed
+			text[nletter] = letter;
+			nletter++;
+			strcpy(text2write,text);
+			
+			PA_OutputSimpleText(1, 8, 14, "writing text :" ); // Write the text
+			PA_OutputSimpleText(1, 8, 15, text2write ); // Write the text
+			return text2write;
+		}
+	
+		
+		PA_OutputSimpleText(1, 8, 11, text); // Write the text		
+		PA_WaitForVBL();
+	}
+	
+return 0;
+}
+
+
+
 
 
 
