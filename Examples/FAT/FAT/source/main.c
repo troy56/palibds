@@ -10,7 +10,7 @@
 char filename[50]; // Temporary string for file names
 
 
-char* filewrite();
+char* GetTextFromKeyboard();
 
 // Function: main()
 int main(int argc, char ** argv)
@@ -26,31 +26,28 @@ int main(int argc, char ** argv)
 	
 	if (PA_InitFat()) {
     
-		PA_OutputText(1,0,0,"fat init success");
-	
-		PA_OutputText(1,0,1,PA_ReadTextFile("/test.txt"));
+		PA_OutputText(1,0,0,"fat init success");					//yey we have a compatible fat card!
+		PA_OutputText(1,0,1,PA_ReadTextFile("/test.txt"));			// Lets read a text file located at /test.txt
 		
-		PA_OutputText(1,0,0,"%d  bytes written", PA_WriteTextFile("/test.txt", filewrite()));
-		
-
+		// lets write the output from the keyboard to /test.txt and print out the amount of bytes written to disk	
+		PA_OutputText(1,0,0,"%d  bytes written", PA_WriteTextFile("/test.txt",GetTextFromKeyboard()));	
 	
 	} else {
 	
 		PA_OutputText(1,0,0,"fat init failure");
-    
-					// Failure stop program
-		while(1) { 
-	
+   
+					// Failed to find a compatible card, stop program
+		while(1) {
+
 		}
 	} 
+	
 	PA_KeyboardOut();
 	PA_OutputText(1,0,4,"File written to card, Reboot ds and check the message");
 
 	while (1)
 	{ 
-			
-		
-		
+			//end
 		PA_WaitForVBL();
 	}
 	
@@ -58,7 +55,7 @@ int main(int argc, char ** argv)
 } // End of main()
 	
 
-char* filewrite() {
+char* GetTextFromKeyboard() {
 
 	char* text2write=" ";
 	char text[200];
@@ -73,50 +70,38 @@ char* filewrite() {
 	
 	s32 nletter = 0; // Next letter to right. 0 since no letters are there yet
 	char letter = 0; // New letter to write.
-	
+
 	// Infinite loop to keep the program running
 	while (1)
 	{
 
 		letter = PA_CheckKeyboard();
-		
+
 		if (letter > 31) { // there is a new letter
+
 			text[nletter] = letter;
 			nletter++;
 		}
+
 		else if ((letter == PA_BACKSPACE)&&nletter) { // Backspace pressed
+
 			nletter--;
 			text[nletter] = ' '; // Erase the last letter
 		}
+
 		else if (letter == '\n'){ // Enter pressed
+
 			text[nletter] = letter;
 			nletter++;
 			strcpy(text2write,text);
-			
-			PA_OutputSimpleText(1, 8, 14, "writing text :" ); // Write the text
-			PA_OutputSimpleText(1, 8, 15, text2write ); // Write the text
-			return text2write;
+			PA_OutputSimpleText(1, 8, 14, "writing text :" );
+			PA_OutputSimpleText(1, 8, 15, text2write ); // text Thats going to be written
+			return text2write;							 //return that text
 		}
-	
-		
-		PA_OutputSimpleText(1, 8, 11, text); // Write the text		
+
+		PA_OutputSimpleText(1, 8, 11, text); // Display the typed characters
 		PA_WaitForVBL();
 	}
-	
+
 return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
